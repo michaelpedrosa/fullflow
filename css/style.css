@@ -281,7 +281,7 @@ h3 { font-size: 1.5rem; }
 
 /* Footer */
 .footer {
-    padding: 6rem 0 2rem; border-top: 1px solid var(--border-color);
+    padding: 6rem 0 6rem; border-top: 1px solid var(--border-color);
     background: #000; position: relative; overflow: hidden;
 }
 .footer::before {
@@ -290,7 +290,7 @@ h3 { font-size: 1.5rem; }
 }
 .cta-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; }
 .footer-bottom {
-    margin-top: 6rem; padding: 2rem 5%; display: flex; justify-content: space-between; align-items: center;
+    margin-top: 6rem; padding: 3rem 5%; display: flex; justify-content: space-between; align-items: center;
     border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem;
 }
 .footer-links a:hover { color: var(--text-primary) !important; }
