@@ -77,10 +77,11 @@ h3 { font-size: 1.5rem; }
 
 /* Navbar */
 .navbar {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-    padding: 1.5rem 0; background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color); transition: var(--transition);
+    position: fixed; top: 1.5rem; left: 50%; width: calc(100% - 4rem); z-index: 100;
+    transform: translateX(-50%);
+    padding: 0.75rem 0; background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color); border-radius: 100px; transition: var(--transition);
 }
 .nav-container {
     max-width: 1200px; margin: 0 auto; padding: 0 2rem;
