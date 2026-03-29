@@ -28,13 +28,13 @@ body {
 
 /* ── Vanta / animated background overlay – lighten instead of darken ── */
 #vanta-bg::after {
-    background: rgba(248, 247, 245, 0.88);
+    background: rgba(248, 247, 245, 0.65);
 }
 
 /* ── Navbar ── */
 .navbar {
-    background: rgba(248, 247, 245, 0.95);
-    border-bottom: 1px solid var(--border-color);
+    background: #202020;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar::after {
@@ -44,7 +44,7 @@ body {
 
 /* ── Logo ── */
 .logo {
-    color: var(--text-primary);
+    color: #ffffff;
     display: flex;
     align-items: center;
 }
@@ -57,20 +57,20 @@ body {
 
 /* ── Nav links ── */
 .nav-links a {
-    color: var(--text-secondary);
+    color: #ffffff;
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: #ffffff;
 }
 
 /* ── Language switch ── */
 .lang-switch {
-    border-left-color: var(--border-color);
+    border-left-color: rgba(255, 255, 255, 0.1);
 }
 
 .lang-switch a {
-    color: var(--text-secondary);
+    color: #a0a0a0;
 }
 
 .lang-switch a.active {
@@ -175,7 +175,7 @@ body {
 
 /* ── Advantage box ── */
 .advantage-box {
-    background: linear-gradient(180deg, var(--surface-color) 0%, rgba(248, 247, 245, 0) 100%);
+    background: linear-gradient(180deg, var(--surface-color) 0%, var(--bg-color) 100%);
     border-color: var(--border-color);
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
@@ -199,8 +199,9 @@ body {
 }
 
 .step-connector {
-    background: var(--accent-1);
-    margin-top: 29px; /* Centered with 60px circle (30px center - 1px half-height) */
+    background: var(--accent-1) !important;
+    margin-top: 29px;
+    /* Centered with 60px circle (30px center - 1px half-height) */
 }
 
 .step-circle {
@@ -209,8 +210,13 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.step-connector {
-    background: var(--border-color);
+@media (max-width: 992px) {
+    .process-flow {
+        align-items: center;
+    }
+    .step-connector {
+        margin-top: 0;
+    }
 }
 
 /* ── Pricing cards ── */
@@ -226,7 +232,7 @@ body {
 
 .pricing-card.premium {
     border-color: rgba(250, 110, 67, 0.3);
-    background: linear-gradient(180deg, rgba(250, 110, 67, 0.04) 0%, var(--surface-color) 100%);
+    background: linear-gradient(180deg, #fef5f1 0%, var(--surface-color) 100%);
 }
 
 .tier {
@@ -328,8 +334,10 @@ body {
 
 /* ── Footer ── */
 .footer {
-    background: #eeebe5;
-    border-top-color: var(--border-color);
+    background: #202020;
+    border-top-color: rgba(255, 255, 255, 0.1);
+    padding-top: 3rem;
+    padding-bottom: 0;
 }
 
 .footer::before {
@@ -337,14 +345,22 @@ body {
     opacity: 0.4;
 }
 
+.footer .cta-title {
+    color: #ffffff;
+}
+
+.footer .cta-desc {
+    color: #a0a0a0;
+}
+
 .footer-bottom {
-    border-top-color: var(--border-color);
-    color: var(--text-secondary);
+    border-top-color: rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
 }
 
 /* ── Footer links ── */
 .footer-links a:hover {
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
 }
 
 /* ── Noise overlay – keep subtle ── */
