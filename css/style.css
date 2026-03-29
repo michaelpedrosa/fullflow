@@ -730,6 +730,14 @@ h3 {
     margin-left: 0.25rem;
 }
 
+.price-per-unit {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
 .features {
     list-style: none;
     margin: 2rem 0;

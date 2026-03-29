@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(5, 5, 5, 0.9)';
-            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            navbar.style.background = 'rgba(248, 247, 245, 0.95)';
+            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.08)';
             navbar.style.padding = '1rem 0';
         } else {
-            navbar.style.background = 'rgba(5, 5, 5, 0.7)';
+            navbar.style.background = 'rgba(248, 247, 245, 0.8)';
             navbar.style.boxShadow = 'none';
             navbar.style.padding = '1.5rem 0';
         }
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 14247723,
-            backgroundColor: 6949
+            color: 16412227, // #FA6E43
+            backgroundColor: 16316405 // #F8F7F5
         });
     }
 });
