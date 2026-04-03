@@ -31,15 +31,33 @@ body {
     background: rgba(248, 247, 245, 0.65);
 }
 
-/* ── Navbar ── */
+/* ── Navbar: Floating Glassmorphism ── */
 .navbar {
-    background: #202020;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+    border-radius: 100px;
+    padding: 0.75rem 0;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1000;
 }
 
 .navbar::after {
-    background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
-    opacity: 0.6;
+    display: none; /* remove old gradient line */
+}
+
+.navbar.scrolled {
+    width: 90%;
+    top: 1rem;
+    background: rgba(15, 15, 15, 0.9);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Logo ── */
@@ -50,18 +68,44 @@ body {
 }
 
 .logo-img {
-    height: 25px;
+    height: 20px;
     width: auto;
     display: block;
+    transition: transform 0.4s ease;
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05);
 }
 
 /* ── Nav links ── */
 .nav-links a {
     color: #ffffff;
+    opacity: 0.7;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-1);
+    transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .nav-links a:hover {
     color: #ffffff;
+    opacity: 1;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* ── Language switch ── */
@@ -78,15 +122,40 @@ body {
     color: var(--accent-1);
 }
 
-/* ── Buttons ── */
+/* ── Buttons: Smooth & Liquid ── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn {
+    border-radius: 100px;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(250, 110, 67, 0.3);
+}
+
 .btn-outline {
+    border-radius: 100px;
     color: var(--text-primary);
-    border-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    background: transparent;
 }
 
 .btn-outline:hover {
-    background: var(--surface-light);
-    border-color: #999;
+    background: var(--text-primary);
+    color: #ffffff;
+    border-color: var(--text-primary);
 }
 
 /* ── Badge (hero pill) ── */
@@ -96,9 +165,25 @@ body {
     color: var(--text-secondary);
 }
 
-/* ── Hero subtitle ── */
+/* ── Hero Section ── */
+.hero {
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 9vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+}
+
 .hero-subtitle {
     color: var(--text-secondary);
+    font-size: 1.15rem;
+    margin-top: 2rem;
+    max-width: 650px;
+    opacity: 0.85;
 }
 
 /* ── Reveal-text animation (light version) ── */
@@ -134,22 +219,38 @@ body {
     color: var(--text-secondary);
 }
 
-/* ── Section description ── */
-.section-desc {
-    color: var(--text-secondary);
+/* ── Global Section Transitions ── */
+.section {
+    padding: 10rem 0;
 }
 
-/* ── Bento cards ── */
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+}
+
+.section-desc {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* ── Bento cards: Interactive ── */
 .bento-card {
-    background: var(--surface-color);
-    border-color: var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 24px;
 }
 
 .bento-card:hover {
-    border-color: rgba(0, 0, 0, 0.18);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
+    border-color: var(--accent-1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px) scale(1.01);
 }
 
 .bento-card p {
@@ -158,15 +259,19 @@ body {
 
 /* ── Glass / solution cards ── */
 .glass-card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
     border-color: var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 32px;
 }
 
 .glass-card:hover {
-    background: rgba(255, 255, 255, 0.95);
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-color: var(--accent-1);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.06);
+    transform: translateY(-12px);
 }
 
 .glass-card p {
@@ -219,20 +324,28 @@ body {
     }
 }
 
-/* ── Pricing cards ── */
+/* ── Pricing cards: Premium & Dynamic ── */
 .pricing-card {
-    background: var(--surface-color);
-    border-color: var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 32px;
 }
 
 .pricing-card:hover {
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-12px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-1);
 }
 
 .pricing-card.premium {
-    border-color: rgba(250, 110, 67, 0.3);
-    background: linear-gradient(180deg, #fef5f1 0%, var(--surface-color) 100%);
+    border-color: rgba(250, 110, 67, 0.2);
+    background: linear-gradient(180deg, rgba(254, 250, 248, 0.85) 0%, rgba(255, 255, 255, 0.75) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .tier {
@@ -266,21 +379,26 @@ body {
     color: var(--text-primary);
 }
 
-/* ── Methodology section ── */
+/* ── Methodology section: Modern ── */
 .methodology {
-    background: #f0ede8;
-    border-top-color: var(--border-color);
+    background: #f4f2ef;
+    border-top: 1px solid var(--border-color);
 }
 
 .methodology-card {
-    background: var(--surface-color);
-    border-color: var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    border-radius: 28px;
 }
 
 .methodology-card:hover {
     border-color: var(--accent-1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    transform: translateY(-6px);
 }
 
 .methodology-card h3 {
@@ -366,4 +484,22 @@ body {
 /* ── Noise overlay – keep subtle ── */
 .noise-overlay {
     opacity: 0.02;
+}
+
+/* ── Typography Fixes ── */
+.text-gradient {
+    padding: 0 0.08em 0.15em 0;
+    margin-bottom: -0.15em;
+    display: inline-block;
+}
+
+/* ── Translucent Section Backgrounds ── */
+.model,
+.vision {
+    background: linear-gradient(180deg, rgba(248, 247, 245, 0.45) 0%, rgba(248, 236, 231, 0.6) 50%, rgba(248, 247, 245, 0.45) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
