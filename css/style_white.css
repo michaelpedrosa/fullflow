@@ -503,3 +503,29 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* ── Case Studies (Light Theme Overrides) ── */
+.client-tab {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.case-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.case-card:hover {
+    border-color: var(--accent-1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.packshot-info {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.metric-pill {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}

@@ -118,7 +118,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateReveal);
     updateReveal();
 
-    // 6. Vanta.js Topology Background
+    // 6. Client Case Studies Filtering
+    const clientTabs = document.querySelectorAll('.client-tab');
+    const caseCards = document.querySelectorAll('.case-card');
+
+    if (clientTabs.length > 0) {
+        clientTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                clientTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                const targetClient = tab.getAttribute('data-client');
+
+                // Filter cards
+                caseCards.forEach(card => {
+                    const cardClient = card.getAttribute('data-client');
+                    if (targetClient === 'all' || cardClient === targetClient) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // 7. Vanta.js Topology Background
     if (typeof VANTA !== 'undefined') {
         VANTA.TOPOLOGY({
             el: "#vanta-bg",
